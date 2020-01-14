@@ -1,4 +1,4 @@
-package aulaOrientacaoObjeto;
+package com.aulaOrientacaoObjeto;
 
 public class Main {
     public static void main(String[] args) {

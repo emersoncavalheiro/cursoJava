@@ -1,4 +1,4 @@
-package aulaOrientacaoObjeto;
+package com.aulaOrientacaoObjeto;
 
 public class Data {
     public int dia;
