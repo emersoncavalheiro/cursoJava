@@ -36,22 +36,17 @@ public class Conta {
         return saldoConta;
     }
 
-    public void setSaldoConta(double saldoConta) {
-        this.saldoConta = saldoConta;
-    }
-
     public void sacarValor(double valorSaque) {
-        this.saldoConta = saldoConta - valorSaque;
+        this.saldoConta -= valorSaque;
     }
 
     public void depositarValor(double valorDeposito){
-        this.saldoConta = saldoConta + valorDeposito;
+        this.saldoConta += valorDeposito;
     }
 
-    public double calculaRendimento(){
-        double valorRendimento;
-        valorRendimento = this.saldoConta * 0.1;
-        return valorRendimento;
+    public double calcularRendimento(){
+        return this.saldoConta *= 0.1;
+
 
     }
     public void setDataAberturaConta(int dia, int mes, int ano){
@@ -61,16 +56,21 @@ public class Conta {
         data.setAno(ano);
         this.dataAberturaConta = data;
 
+
     }
     public String recuperaDadosParaImpressao() {
 
         String dados = "Titular da conta: " + this.nomeTitular;
+
         dados += "\nNumero da conta: " + this.numeroConta;
         dados += "\nAgencia: " + this.agenciaBancaria;
         dados += "\nSaldo atual: " + this.saldoConta;
         dados += "\nDia: " + this.dataAberturaConta.getDia();
         dados += "\nMes: " + this.dataAberturaConta.getMes();
         dados += "\nAno: " + this.dataAberturaConta.getAno();
+        dados += "\nRendimentos: " + this.calcularRendimento();
+
         return dados;
+
     }
 }
