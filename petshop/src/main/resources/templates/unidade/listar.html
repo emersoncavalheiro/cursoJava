@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Unidades</title>
+</head>
+<body>
+    <h1>Unidades cadastradas: </h1>
+    <li th:each=" uni : ${unidades}">
+    <span th:text="${uni.nome}"></span>
+    -
+    <span th:text="${uni.endereco}"></span>
+
+        <a href="@{/admin/unidade/excluir(nome=${uni.nome})}">X</a>
+
+    </li>
+
+</body>
+</html>

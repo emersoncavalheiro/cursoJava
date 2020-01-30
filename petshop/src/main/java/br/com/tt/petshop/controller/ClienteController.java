@@ -1,11 +1,22 @@
 package br.com.tt.petshop.controller;
 
+import br.com.tt.petshop.model.Cliente;
+import br.com.tt.petshop.service.ClienteService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 public class ClienteController {
+
+    private ClienteService clienteService;
+
+    public ClienteController(ClienteService clienteService) {
+        this.clienteService = clienteService;
+    }
+
 
     @RequestMapping("/admin")
     public String inicial(Model model) {
@@ -18,14 +29,18 @@ public class ClienteController {
         return "/cliente/cadastrar";
     }
 
-    @RequestMapping
-    public String salvar(Model model){
-        //String nome = (String) model.getAttribute("nome");
-        //String cpf = (String) model.getAttribute("CPF");
-        //String nascimento = (String) model.getAttribute("nascimento");
+    @RequestMapping("/admin/cliente/salvar")
+    public String salvar(Cliente cliente, Model model){
+        this.clienteService.criar(cliente);
+        return "redirect:/admin";
 
-        return "inicial";
+    }
 
+    @RequestMapping("/admin/cliente/listar")
+    public String listar(Model model){
+        List<Cliente> lista = this.clienteService.listar();
+        model.addAttribute("clientes" , lista);
+        return "/cliente/listar";
     }
 
 }
